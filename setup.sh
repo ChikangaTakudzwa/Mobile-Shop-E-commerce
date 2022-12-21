@@ -35,6 +35,9 @@ npx tailwindcss init
 echo "installing flowbite"
 npm i flowbite
 
+echo "installing flowbite-typography"
+npm install -D flowbite-typography
+
 echo "Watching tailwind css"
 npx tailwindcss -i ./app/static/css/input.css -o ./app/static/css/output.css --watch
 
