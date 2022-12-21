@@ -1743,6 +1743,18 @@ input:checked + .toggle-bg {
   margin-left: 5vw;
 }
 
+.ml-\[2vw\] {
+  margin-left: 2vw;
+}
+
+.ml-\[vw\] {
+  margin-left: vw;
+}
+
+.ml-\[3vw\] {
+  margin-left: 3vw;
+}
+
 .block {
   display: block;
 }
