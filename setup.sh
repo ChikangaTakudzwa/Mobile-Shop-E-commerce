@@ -23,19 +23,20 @@ source appenv/bin/activate && python3 -m pip install --upgrade pip wheel
 source appenv/bin/activate && pip install -r ./project/requirements.txt
 
 echo="Adding postcss and autoprefixer"
-cd project && yarn add -W tailwindcss@latest postcss@latest autoprefixer@latest
+cd project
+yarn add -W tailwindcss@latest postcss@latest autoprefixer@latest
 
 echo "Installing Tailwind"
-cd project && npm install -D tailwindcss
+npm install -D tailwindcss
 
 echo "Running Tailwind init"
-cd project && npx tailwindcss init
+npx tailwindcss init
 
 echo "installing flowbite"
-cd project && npm i flowbite
+npm i flowbite
 
 echo "Watching tailwind css"
-cd project && npx tailwindcss -i ./app/static/css/input.css -o ./app/static/css/output.css --watch
+npx tailwindcss -i ./app/static/css/input.css -o ./app/static/css/output.css --watch
 
 
 
