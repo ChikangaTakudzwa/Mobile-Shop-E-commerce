@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-+e*4k*tt$ap#-8z_fa*0nm)pzd&=7mo03x23wro1bungo*3fga
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
 
 # Application definition
 
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
     'product',
 ]
 
-COMPRESS_ROOT = BASE_DIR / 'app/static'
+COMPRESS_ROOT = BASE_DIR / 'app/static/'
 
 COMPRESS_ENABLED = True
 
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': ['/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+STATIC_ROOT = ''
 STATIC_URL = 'static/'
 
 # Default primary key field type
