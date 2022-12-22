@@ -8,3 +8,10 @@ def index(request):
         "products": products
     }
     return render(request, 'home/home.html', context)
+
+def shop(request):
+    products = Product.objects.all()
+    context = {
+        "products": products
+    }
+    return render(request, 'shop/shop.html', context)
