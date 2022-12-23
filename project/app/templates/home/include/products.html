@@ -14,10 +14,10 @@
 <div class="container mx-auto p-[2%]">
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         <div class="filter min-w-full min-h-full lg:w-1/4">
-            <form action="#" class="mb-6 pt-3">
+            <form method="GET" action="." class="mb-6 pt-3">
                 <div class="flex mb-6 min-w-full">
                    <!-- <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label> -->
-                   <input type="text" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required>
+                   <input name="query" type="text" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required>
                    <button class="p-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -26,22 +26,17 @@
                 </div>
             </form>
             <h3 class="mb-3 text-xl font-light">Categories</h3>
-            
+            <a href="{% url 'shop' %}" aria-current="true" class="ml-0 pl-0 block py-2 px-4 w-full border-b {% if not ad %}text-blue-700{% else %}text-black{% endif %} border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                All categories
+            </a>
+            {% for cate in categories %}
             <div class=" text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <a href="#" aria-current="true" class="ml-0 pl-0 block py-2 px-4 w-full border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-                    All category
-                </a>
-                <a href="#" class="ml-0 pl-0 block py-2 px-4 w-full border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-                    IOS
-                </a>
-                <a href="#" class="ml-0 pl-0 block py-2 px-4 w-full border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-                    Android
-                </a>
-                <a href="#" class="ml-0 pl-0 block py-2 px-4 w-full rounded-b-lg cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-                    MOD
+                
+                <a href="{% url 'shop' %}?category={{ cate.slug }}" aria-current="true" class="ml-0 pl-0 block py-2 px-4 w-full border-b {% if cate.slug == ad %}text-blue-700{% else %}text-black{% endif %} border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-500 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                    {{ cate.name }}
                 </a>
             </div>
-
+            {% endfor %}
         </div>
         {% for product in products %}
         <div class="max-w-sm bg-white border lg:w-3/4 mx-auto border-gray-200 rounded-lg shadow-md md:w-[100%] lg:w-[100%] dark:bg-gray-800 dark:border-gray-700">
