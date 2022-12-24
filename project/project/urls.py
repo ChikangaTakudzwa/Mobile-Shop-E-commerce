@@ -21,13 +21,14 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from product.views import product
 from app.views import index, shop
+from cart.views import add_to_cart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', index, name="index"),
     path('shop/', shop, name="shop"),
     path('shop/<slug:model>/', product, name="product"),
-
+    path('add_to_cart/<int:product_id>', add_to_cart, name="add_to_cart"),
     path('', RedirectView.as_view(url='app/', permanent=True)),
     # path('product/', RedirectView.as_view(url='product/', permanent=True)),
 ]
