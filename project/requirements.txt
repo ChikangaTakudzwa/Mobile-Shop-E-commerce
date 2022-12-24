@@ -3,6 +3,8 @@ backports.zoneinfo==0.2.1
 Django==4.1.4
 django-appconf==1.0.5
 django-compressor==4.1
+django-environ==0.9.0
+psycopg2==2.9.5
 rcssmin==1.1.0
 rjsmin==1.2.0
 sqlparse==0.4.3

@@ -11,10 +11,16 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -25,8 +31,9 @@ SECRET_KEY = 'django-insecure-+e*4k*tt$ap#-8z_fa*0nm)pzd&=7mo03x23wro1bungo*3fga
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
 
 # Application definition
 
@@ -39,9 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'compressor',
+    'product',
 ]
 
-COMPRESS_ROOT = BASE_DIR / 'app/static'
+COMPRESS_ROOT = BASE_DIR / 'app/static/'
 
 COMPRESS_ENABLED = True
 
@@ -62,7 +70,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': ['/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,8 +91,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ChikangaTakudzwa/movie_app',
+        'USER': 'ChikangaTakudzwa',
+        'PASSWORD': 'v2_3xJQv_zUncFgaz6udhsbrSWMt5MzQ',
+        'HOST': 'db.bit.io',
+        'PORT': '5432',
     }
 }
 
@@ -123,6 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+STATIC_ROOT = ''
 STATIC_URL = 'static/'
 
 # Default primary key field type
