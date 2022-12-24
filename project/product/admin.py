@@ -9,4 +9,4 @@ class ProductCategory(admin.ModelAdmin):
 # Register your models here.
 @admin.register(Product)
 class Products(admin.ModelAdmin):
-    list_display = ("category", "name", "slug", "description", "price", "created_at")
+    list_display = ("category", "name", "model", "slug", "description", "price", "created_at")

@@ -19,13 +19,17 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from product.views import product
+from app.views import index, shop
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/', include('app.urls')),
-    path('product/', include('product.urls')),
+    path('app/', index, name="index"),
+    path('shop/', shop, name="shop"),
+    path('shop/<slug:model>/', product, name="product"),
+
     path('', RedirectView.as_view(url='app/', permanent=True)),
-    path('product/', RedirectView.as_view(url='product/', permanent=True)),
+    # path('product/', RedirectView.as_view(url='product/', permanent=True)),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()

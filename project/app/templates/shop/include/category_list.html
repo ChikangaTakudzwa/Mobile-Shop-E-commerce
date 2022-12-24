@@ -1,0 +1,9 @@
+{% load compress %}
+{% load static %}
+
+
+<div class=" text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <a href="{% url 'shop' %}?category={{ cate.slug }}" aria-current="true" class="ml-0 pl-0 block py-2 px-4 w-full border-b {% if cate.slug == ad %}text-blue-700{% else %}text-black{% endif %} border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-500 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        {{ cate.name }}
+    </a>
+</div>

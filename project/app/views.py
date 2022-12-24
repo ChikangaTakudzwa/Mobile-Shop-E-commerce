@@ -5,7 +5,7 @@ from django.db.models import Q
 
 # Create your views here.
 def index(request):
-    products = Product.objects.all()[0:8]
+    products = Product.objects.all()[0:9]
     category = Category.objects.all()
     active_category = request.GET.get('category', '')
     context = {
@@ -22,13 +22,25 @@ def shop(request):
     if active_category:
         products = products.filter(slug=active_category)
 
+    # get form data
     query = request.GET.get('query', '')
     if query:
         # use Q to query many table columns
         products = products.filter(Q(name__contains=query) | Q(description__contains=query))
+    
     context = {
         "products": products,
         "categories": category,
-        "ad": active_category
+        "ad": active_category,
     }
     return render(request, 'shop/shop.html', context)
+
+# def product(request, model):
+#     products = Product.objects.filter(model=model)
+#     data = products
+#     context = {
+#         # "name": name,
+#         "item": data
+#     }
+    
+#     return render(request, "product/product.html", context)
