@@ -34,13 +34,4 @@ def shop(request):
         "ad": active_category,
     }
     return render(request, 'shop/shop.html', context)
-
-# def product(request, model):
-#     products = Product.objects.filter(model=model)
-#     data = products
-#     context = {
-#         # "name": name,
-#         "item": data
-#     }
     
-#     return render(request, "product/product.html", context)
