@@ -21,6 +21,13 @@ def signup(request):
     }
     return render(request, 'auth/signup.html', context)
 
+
+def login(request):
+    context = {
+        "title": "Log in",
+    }
+    return render(request, 'auth/login.html', context)
+
 def shop(request):
     category = Category.objects.all()
     products = Product.objects.all()
