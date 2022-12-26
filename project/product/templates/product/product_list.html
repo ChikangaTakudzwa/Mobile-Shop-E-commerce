@@ -4,7 +4,7 @@
 
 <div class="max-w-sm bg-white border lg:w-3/4 mx-auto border-gray-200 rounded-lg shadow-md md:w-[100%] lg:w-[100%] dark:bg-gray-800 dark:border-gray-700">
     <a href="{% url 'product' product.model %}">
-        <img class="rounded-t-lg" src="{% static 'img/iphone.jpg' %}" alt="" />
+        <img class="rounded-t-lg" src="{{ product.get_thumbnail }}" alt="" />
     </a>
     <div class="p-5">
         <a href="{% url 'product' product.model %}">

@@ -15,21 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from product.views import product
-from app.views import index, shop
+from app.views import index, shop, signup, login_page
+from cart.views import add_to_cart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/', index, name="index"),
+    path('', index, name="index"),
+    path('signup/', signup, name="signup"),
+    path('login/', views.LoginView.as_view(template_name='auth/login.html'), name="login"),
+    path('logout/', views.LogoutView.as_view(), name="logout"),
     path('shop/', shop, name="shop"),
     path('shop/<slug:model>/', product, name="product"),
-
-    path('', RedirectView.as_view(url='app/', permanent=True)),
-    # path('product/', RedirectView.as_view(url='product/', permanent=True)),
+    path('add_to_cart/<int:product_id>', add_to_cart, name="add_to_cart"),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()

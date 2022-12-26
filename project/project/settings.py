@@ -35,6 +35,8 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
 
+SESSION_COOKIE_AGE = 86400
+CART_SESSION_ID = 'cart'
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'app',
     'compressor',
     'product',
+    'cart',
 ]
 
 COMPRESS_ROOT = BASE_DIR / 'app/static/'
@@ -78,6 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -137,6 +141,12 @@ USE_TZ = True
 
 STATIC_ROOT = ''
 STATIC_URL = 'static/'
+
+MEDIA_URL = ''
+MEDIA_ROOT = ''
+
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
