@@ -15,6 +15,12 @@ def index(request):
     }
     return render(request, 'home/home.html', context)
 
+def signup(request):
+    context = {
+        "title": "Sign up",
+    }
+    return render(request, 'auth/signup.html', context)
+
 def shop(request):
     category = Category.objects.all()
     products = Product.objects.all()

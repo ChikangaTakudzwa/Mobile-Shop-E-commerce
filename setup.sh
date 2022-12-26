@@ -34,6 +34,13 @@ source appenv/bin/activate && pip install -r ./project/requirements.txt
 
 echo "....................."
 echo "....................."
+echo "Installing htmx"
+echo "....................."
+echo "....................."
+npm install htmx.org
+
+echo "....................."
+echo "....................."
 echo "Adding postcss and autoprefixer"
 echo "....................."
 echo "....................."
