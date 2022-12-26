@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from product.models import Product, Category
 from django.conf import settings
 from django.db.models import Q
+from .forms import signUpForm
+from django.contrib.auth import login
 
 # Create your views here.
 def index(request):
@@ -16,13 +18,24 @@ def index(request):
     return render(request, 'home/home.html', context)
 
 def signup(request):
+    # check to see if user has clicked the submit button and run 
+    if request.method == 'POST':
+        form = signUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            # redirect the user to the index page
+            return redirect('/')
+    else:
+        form = signUpForm()
     context = {
         "title": "Sign up",
+        "form": form,
     }
     return render(request, 'auth/signup.html', context)
 
 
-def login(request):
+def login_page(request):
     context = {
         "title": "Log in",
     }

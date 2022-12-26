@@ -31,10 +31,11 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    # method to get the product price
     def get_display_price(self):
         return self.price
 
-    def get_thubmnail(self):
+    def get_thumbnail(self):
         # check to see if already exist and return it
         if self.thumbnail:
             return self.thumbnail.url
@@ -46,7 +47,7 @@ class Product(models.Model):
                 self.save()
                 return self.thumbnail.url
             else:
-                return 'https://via.placeholder.com/240x240.jpg'
+                return 'https://via.placeholder.com/1024x1024.jpg'
 
     # make thumbnail method, take in image and default size
     def make_thumbnail(self, image, size=(300, 300)):
@@ -62,5 +63,5 @@ class Product(models.Model):
         img.save(thumb_io, 'JPEG', quality=85)
 
         # make method return the saved image
-        thumbnail = FIle(thumb_io, name=image.name)
+        thumbnail = File(thumb_io, name=image.name)
         return thumbnail

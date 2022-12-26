@@ -15,8 +15,20 @@
             {% csrf_token %}
             <div class="p-2 w-full">
               <div class="relative">
-                <label for="name" class="leading-7 text-sm text-gray-600">Full Name</label>
-                <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <label for="name" class="leading-7 text-sm text-gray-600">Userame</label>
+                <input type="text" id="username" name="username" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              </div>
+            </div>
+            <div class="p-2 w-full">
+              <div class="relative">
+                <label for="name" class="leading-7 text-sm text-gray-600">First Name</label>
+                <input type="text" id="first_name" name="first_name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              </div>
+            </div>
+            <div class="p-2 w-full">
+              <div class="relative">
+                <label for="name" class="leading-7 text-sm text-gray-600">Last Name</label>
+                <input type="text" id="last_name" name="last_name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
               </div>
             </div>
             <div class="p-2 w-full">
@@ -28,18 +40,30 @@
             <div class="p-2 w-full">
               <div class="relative">
                 <label for="password" class="leading-7 text-sm text-gray-600">Password</label>
-                <input type="password" id="password" name="password" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <input type="password" id="password1" name="password1" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
               </div>
             </div>
             <div class="p-2 w-full">
               <div class="relative">
                 <label for="password" class="leading-7 text-sm text-gray-600">Confirm Password</label>
-                <input type="password" id="password" name="password" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                <input type="password" id="password2" name="password2" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
               </div>
             </div>
-            <div class="p-2 bg-red-200 text-red-800 rounded-xl min-w-full">
-                This is an error
-            </div>
+            {% if form.errors %}
+              {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="p-2 bg-red-200 text-red-800 rounded-xl min-w-full">
+                        {{ error|escape }}
+                    </div>
+                {% endfor %}
+              {% endfor %}
+
+              {% for error in form.non_field_errors %}
+                    <div class="p-2 bg-red-200 text-red-800 rounded-xl min-w-full">
+                        {{ error|escape }}
+                    </div>
+              {% endfor %}
+            {% endif %}
             <div class="p-2 w-full">
               <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
             </div>
