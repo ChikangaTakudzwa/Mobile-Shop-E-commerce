@@ -1755,6 +1755,10 @@ input:checked + .toggle-bg {
   margin-top: 0.5rem;
 }
 
+.mt-7 {
+  margin-top: 1.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1823,8 +1827,68 @@ input:checked + .toggle-bg {
   height: 2.25rem;
 }
 
+.h-\[\] {
+  height: ;
+}
+
+.h-\[35vh\] {
+  height: 35vh;
+}
+
+.h-\[5vh\] {
+  height: 5vh;
+}
+
+.h-\[25vh\] {
+  height: 25vh;
+}
+
+.h-\[27vh\] {
+  height: 27vh;
+}
+
+.h-\[vh\] {
+  height: vh;
+}
+
+.h-\[30vh\] {
+  height: 30vh;
+}
+
+.h-\[33vh\] {
+  height: 33vh;
+}
+
+.h-\[29vh\] {
+  height: 29vh;
+}
+
+.max-h-\[\] {
+  max-height: ;
+}
+
+.max-h-\[26\] {
+  max-height: 26;
+}
+
+.max-h-\[26vh\] {
+  max-height: 26vh;
+}
+
 .min-h-full {
   min-height: 100%;
+}
+
+.min-h-\[\] {
+  min-height: ;
+}
+
+.min-h-\[24\] {
+  min-height: 24;
+}
+
+.min-h-\[24vh\] {
+  min-height: 24vh;
 }
 
 .w-5 {
@@ -2320,6 +2384,10 @@ input:checked + .toggle-bg {
   text-align: center;
 }
 
+.align-middle {
+  vertical-align: middle;
+}
+
 .font-sans {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -2613,6 +2681,11 @@ input:checked + .toggle-bg {
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.hover\:text-blue-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(30 66 159 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
