@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from product.views import product
 from app.views import index, shop, signup, login_page
-from cart.views import add_to_cart
+from cart.views import add_to_cart, cart, checkout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,6 +32,8 @@ urlpatterns = [
     path('logout/', views.LogoutView.as_view(), name="logout"),
     path('shop/', shop, name="shop"),
     path('shop/<slug:model>/', product, name="product"),
+    path('cart/', cart, name="cart"),
+    path('cart/checkout/', checkout, name="checkout"),
     path('add_to_cart/<int:product_id>', add_to_cart, name="add_to_cart"),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

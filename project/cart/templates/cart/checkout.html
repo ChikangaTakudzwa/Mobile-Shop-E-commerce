@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load compress %}
+
+{% block checkout %}
+ 
+<section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">Cart</h2>
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">Checkout</h1>
+          <!-- <div class="flex mb-4">
+            <a href="" role="tab" data-tabs-toggle="Tab1ContentSelector" class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Shipping</a>
+            <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Contact</a>
+            <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Payment</a>
+          </div> -->
+          <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+            <ul class="flex flex-wrap justify-between -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+                <li class="mr-2" role="presentation">
+                    <button class="inline-block p-4 rounded-t-lg border-b-2" id="shipping-tab" data-tabs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Shipping</button>
+                </li>
+                <li class="mr-2" role="presentation">
+                    <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="contact-tab" data-tabs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+                </li>
+                <li class="mr-2" role="presentation">
+                    <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="payment-tab" data-tabs-target="#payment" type="button" role="tab" aria-controls="payment" aria-selected="false">Payment</button>
+                </li>
+            
+            </ul>
+        </div>
+        
+
+        <div id="myTabContent" class="my-9">
+            <div class="hidden p-4 overflow-y-auto max-h-[45vh] bg-gray-50 rounded-lg dark:bg-gray-800" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                <div class="mt-3">
+                    <label for="email-address-icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
+                    <div class="relative">
+                      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                      </div>
+                      <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Luke">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="phone-icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+                    <div class="relative">
+                      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>                          
+                      </div>
+                      <input type="phone" id="phone-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Shaw">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="email-address-icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Zipcode</label>
+                    <div class="relative">
+                      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                      </div>
+                      <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Luke">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="phone-icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+                    <div class="relative">
+                      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>                          
+                      </div>
+                      <input type="phone" id="phone-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Shaw">
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="mt-3">
+                    <label for="email-address-icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
+                    <div class="relative">
+                      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                      </div>
+                      <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="phone-icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
+                    <div class="relative">
+                      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                        <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>                          
+                      </div>
+                      <input type="phone" id="phone-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="+(XXX)-XXX-XXX">
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Payment tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+            </div>
+            
+        </div>
+
+          <!-- <div id="Tab1ContentSelector">
+            <p class="leading-relaxed mb-4">Gastropub blue bottle austin listicle pour-over, neutra jean.</p>
+            <div class="flex border-t mt-4 border-gray-200 py-2">
+              <span class="text-gray-500">Product Name</span>
+              <span class="ml-auto text-gray-900">
+                  <a class="p-3 bg-gray-100">-</a>
+                  <span>2</span>
+                  <a class="p-3 bg-gray-100">+</a>
+              </span>
+              <span class="ml-auto text-gray-900">$00.00</span>
+            </div>
+            <div class="flex border-t mt-4 border-gray-200 py-2">
+              <span class="text-gray-500">Product Name</span>
+              <span class="ml-auto text-gray-900">
+                  <a class="p-3 bg-gray-100">-</a>
+                  <span>2</span>
+                  <a class="p-3 bg-gray-100">+</a>
+              </span>
+              <span class="ml-auto text-gray-900">$00.00</span>
+            </div>
+            <div class="flex border-t mt-4 border-b mb-6 border-gray-200 py-2">
+              <span class="text-gray-500">Total</span>
+              <span class="ml-auto text-gray-900">$58.00</span>
+            </div>
+          </div>
+          <div >
+            <p class="leading-relaxed mb-4">Gastropub blue bottle austin listicle pour-over, neutra jean.</p>
+            <div class="flex border-t mt-4 border-gray-200 py-2">
+              <span class="text-gray-500">Product Name</span>
+              <span class="ml-auto text-gray-900">
+                  <a class="p-3 bg-gray-100">-</a>
+                  <span>2</span>
+                  <a class="p-3 bg-gray-100">+</a>
+              </span>
+              <span class="ml-auto text-gray-900">$00.00</span>
+            </div>
+            <div class="flex border-t mt-4 border-gray-200 py-2">
+              <span class="text-gray-500">Product Name</span>
+              <span class="ml-auto text-gray-900">
+                  <a class="p-3 bg-gray-100">-</a>
+                  <span>2</span>
+                  <a class="p-3 bg-gray-100">+</a>
+              </span>
+              <span class="ml-auto text-gray-900">$00.00</span>
+            </div>
+            <div class="flex border-t mt-4 border-b mb-6 border-gray-200 py-2">
+              <span class="text-gray-500">Total</span>
+              <span class="ml-auto text-gray-900">$58.00</span>
+            </div>
+          </div> -->
+
+
+          <div class="flex">
+            <span class="title-font font-medium text-2xl text-gray-900">$58.00</span>
+            <a href="#" class="flex ml-auto"><button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Confirm Checkout</button></a>
+          </div>
+        </div>
+        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+      </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load compress %}
+
+{% block cart %}
+ 
+<section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">Cart</h2>
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">SUMMARY</h1>
+          <div class="flex mb-4">
+            <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
+            <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Reviews</a>
+            <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Details</a>
+          </div>
+          <p class="leading-relaxed mb-4">Gastropub blue bottle austin listicle pour-over, neutra jean.</p>
+          <div class="flex border-t mt-4 border-gray-200 py-2">
+            <span class="text-gray-500">Product Name</span>
+            <span class="ml-auto text-gray-900">
+                <a class="p-3 bg-gray-100">-</a>
+                <span>2</span>
+                <a class="p-3 bg-gray-100">+</a>
+            </span>
+            <span class="ml-auto text-gray-900">$00.00</span>
+          </div>
+          <div class="flex border-t mt-4 border-gray-200 py-2">
+            <span class="text-gray-500">Product Name</span>
+            <span class="ml-auto text-gray-900">
+                <a class="p-3 bg-gray-100">-</a>
+                <span>2</span>
+                <a class="p-3 bg-gray-100">+</a>
+            </span>
+            <span class="ml-auto text-gray-900">$00.00</span>
+          </div>
+          <div class="flex border-t mt-4 border-b mb-6 border-gray-200 py-2">
+            <span class="text-gray-500">Total</span>
+            <span class="ml-auto text-gray-900">$58.00</span>
+          </div>
+          <div class="flex">
+            <span class="title-font font-medium text-2xl text-gray-900">$58.00</span>
+            <a href="#" class="flex ml-auto"><button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Checkout</button></a>
+            <!--  -->
+          </div>
+        </div>
+        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+      </div>
+    </div>
+</section>
+
+{% endblock %}

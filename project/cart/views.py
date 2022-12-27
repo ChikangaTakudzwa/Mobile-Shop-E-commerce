@@ -8,3 +8,12 @@ def add_to_cart(request, product_id):
     cart.add(product_id)
 
     return render(request, 'cart/menu_cart.html')
+
+# method to render the cart page
+def cart(request):
+    return render(request, 'cart/cart.html')
+
+
+# method to render the checkout page
+def checkout(request):
+    return render(request, 'cart/checkout.html')
