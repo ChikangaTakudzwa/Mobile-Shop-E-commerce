@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 
 # Create your views here.
@@ -15,5 +16,10 @@ def cart(request):
 
 
 # method to render the checkout page
+@login_required
 def checkout(request):
-    return render(request, 'cart/checkout.html')
+    cart = Cart(request)
+    context = {
+        "cart": cart
+    }
+    return render(request, 'cart/checkout.html', context)
