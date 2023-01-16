@@ -4,6 +4,8 @@ from django.conf import settings
 from django.db.models import Q
 from .forms import signUpForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def index(request):
@@ -35,11 +37,13 @@ def signup(request):
     return render(request, 'auth/signup.html', context)
 
 
-def login_page(request):
+@login_required
+def my_account(request):
     context = {
-        "title": "Log in",
+        "title": "My Account",
     }
-    return render(request, 'auth/login.html', context)
+    return render(request, 'auth/myaccount.html', context)
+
 
 def shop(request):
     category = Category.objects.all()
@@ -53,7 +57,7 @@ def shop(request):
     if query:
         # use Q to query many table columns
         products = products.filter(Q(name__contains=query) | Q(description__contains=query))
-    
+   
     context = {
         "products": products,
         "categories": category,
