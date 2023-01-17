@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db.models import Q
 from .forms import signUpForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -13,7 +14,8 @@ def index(request):
     context = {
         "products": products,
         "categories": category,
-        "ad": active_category
+        "ad": active_category,
+        "user": request.user
     }
     return render(request, 'home/home.html', context)
 
@@ -35,11 +37,10 @@ def signup(request):
     return render(request, 'auth/signup.html', context)
 
 
-def login_page(request):
-    context = {
-        "title": "Log in",
-    }
-    return render(request, 'auth/login.html', context)
+@login_required
+def my_account(request):
+    
+    return render(request, 'auth/myaccount.html')
 
 def shop(request):
     category = Category.objects.all()
