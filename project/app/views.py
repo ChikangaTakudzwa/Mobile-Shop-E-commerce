@@ -15,7 +15,8 @@ def index(request):
     context = {
         "products": products,
         "categories": category,
-        "ad": active_category
+        "ad": active_category,
+        "user": request.user
     }
     return render(request, 'home/home.html', context)
 
