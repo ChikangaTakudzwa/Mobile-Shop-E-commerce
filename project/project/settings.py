@@ -33,7 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io', 'https://*.github.dev']
 
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
