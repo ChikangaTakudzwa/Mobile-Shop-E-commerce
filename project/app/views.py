@@ -39,8 +39,16 @@ def signup(request):
 
 @login_required
 def my_account(request):
+    context = {
+        "user": request.user
+    }
+    return render(request, 'auth/myaccount.html', context)
+
+
+@login_required
+def edit_my_account(request):
     
-    return render(request, 'auth/myaccount.html')
+    return render(request, 'auth/edit_myaccount.html')
 
 def shop(request):
     category = Category.objects.all()
