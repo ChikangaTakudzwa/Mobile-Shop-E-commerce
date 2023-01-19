@@ -8,8 +8,9 @@ urlpatterns = [
     path('signup/', signup, name="signup"),
     path('login/', views.LoginView.as_view(template_name='auth/login.html'), name="login"),
     path('logout/', views.LogoutView.as_view(), name="logout"),
-    path('me/', views.LoginView.as_view(template_name='auth/myaccount.html'), name="me"),
-    path('me/', edit_my_account, name="edit_my_account"),
+    # path('me/', views.LoginView.as_view(template_name='auth/myaccount.html'), name="me"),
+    path('me/', my_account, name="me"),
+    path('me/update/', edit_my_account, name="update"),
     path('shop/', shop, name="shop"),
     path('shop/<slug:model>/', product, name="product"),
 ]
