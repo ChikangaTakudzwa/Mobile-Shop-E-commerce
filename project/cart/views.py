@@ -16,18 +16,18 @@ def cart(request):
     return render(request, 'cart/cart.html')
 
 
-def update_cart(request, product_id, action):
+def update_cart(request, id, action):
     cart = Cart(request)
 
     # check to see if action is incrementing and then add 1 else remove 1
     if action == 'increment':
-        cart.add(product_id, 1, True)
+        cart.add(id, 1, True)
     else:
-        cart.add(product_id, -1, True)
+        cart.add(id, -1, True)
 
     # get products from the db
-    product = Product.objects.all(pk=product_id)
-    quantity = cart.get_item(product_id)['quantity']
+    product = Product.objects.get(pk=id)
+    quantity = cart.get_item(id)['quantity']
 
     # dictionary to return to the cart
     item = {
