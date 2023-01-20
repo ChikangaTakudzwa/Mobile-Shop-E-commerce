@@ -20,15 +20,7 @@
             <!-- <p class="leading-relaxed mb-4">Gastropub blue bottle austin listicle pour-over, neutra jean.</p> -->
 
             {% for item in cart %}
-            <div class="flex border-t mt-4 border-gray-200 py-2">
-              <span class="text-gray-500">{{ item.product.name }}</span>
-              <span class="ml-auto text-gray-900">
-                  <a class="p-3 bg-gray-100">-</a>
-                  <span>{{ item.quantity }}</span>
-                  <a class="p-3 bg-gray-100">+</a>
-              </span>
-              <span class="ml-auto text-gray-900">${{ item.total_price }}</span>
-            </div>
+              {% include 'cart/cart_item.html' %}
             {% endfor %}
 
             {% if cart %}

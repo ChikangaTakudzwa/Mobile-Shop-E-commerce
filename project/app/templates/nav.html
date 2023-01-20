@@ -5,8 +5,14 @@
           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">UCALL</span>
       </a>
       <div class="flex md:order-2 items-center space-x-4">
-           
+        <!-- htmx wrapper around the menu_cart -->
+        <div
+          hx-get="{% url 'hx_menu_cart' %}"
+          hx-trigger="update-menu-cart from:body"
+          hx-swap="innerHTML"
+        >
           {% include './cart/menu_cart.html' %}
+        </div>
 
           {% include './cart/profile.html' %}
           
