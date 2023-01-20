@@ -61,7 +61,7 @@ def edit_my_account(request):
         user.email = request.POST.get('email')
         user.save()
         return redirect('me')
-    return render(request, 'auth/edit_myaccount.html')
+    return render(request, 'auth/myaccount.html')
 
 def shop(request):
     category = Category.objects.all()
