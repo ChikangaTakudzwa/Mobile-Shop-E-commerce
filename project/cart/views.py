@@ -15,6 +15,7 @@ def add_to_cart(request, product_id):
 def cart(request):
     return render(request, 'cart/cart.html')
 
+
 def update_cart(request, product_id, action):
     cart = Cart(request)
 
@@ -26,7 +27,7 @@ def update_cart(request, product_id, action):
 
     # get products from the db
     product = Product.objects.all(pk=product_id)
-    quantity = cart.get_item(product_id)
+    quantity = cart.get_item(product_id)['quantity']
 
     # dictionary to return to the cart
     item = {
