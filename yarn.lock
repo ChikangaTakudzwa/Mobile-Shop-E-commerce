@@ -197,10 +197,10 @@
     "lodash.isplainobject" "^4.0.6"
     "lodash.merge" "^4.6.2"
 
-"flowbite@^1.6.2":
-  "integrity" "sha512-a/hB/fyG6m+EsMWpCaKOtFZGeQef+JLPS854DdFYitct8MNPnW5YKIOBQnIroyMtn60jOeMINg/XU1yh6m4pxw=="
-  "resolved" "https://registry.npmjs.org/flowbite/-/flowbite-1.6.2.tgz"
-  "version" "1.6.2"
+"flowbite@^1.6.3":
+  "integrity" "sha512-wTtAzZBLrUYqUBoTSNcMAeJrZNAcdx04EDgXWnkQ7gkKoAPFvLaq/H/Zw0JKZLVKFpKxqJ7PlvocfDApSHjhvw=="
+  "resolved" "https://registry.npmjs.org/flowbite/-/flowbite-1.6.3.tgz"
+  "version" "1.6.3"
   dependencies:
     "@popperjs/core" "^2.9.3"
     "mini-svg-data-uri" "^1.4.3"
