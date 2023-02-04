@@ -57,8 +57,10 @@ def checkout(request):
     }
     return render(request, 'cart/checkout.html', context)
 
+# htmx method called when event is triggered, must have a return statement to work
 def hx_menu_cart(request):
-    render(request, 'cart/menu_cart.html')
+    return render(request, 'cart/menu_cart.html')
 
+# htmx method called when event is triggered, must have a return statement to work
 def hx_cart_total(request):
-    render (request, 'cart/cart_total.html')
+    return render (request, 'cart/cart_total.html')

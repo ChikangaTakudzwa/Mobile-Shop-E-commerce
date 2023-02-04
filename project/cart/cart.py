@@ -78,3 +78,9 @@ class Cart(object):
 
     def get_item(self, id):
         return self.cart[str(id)]
+
+    # def get_total_cart_price(self):
+    #     total = 0
+    #     for item in self.cart.values():
+    #         total += item['product'].price
+    #     return total

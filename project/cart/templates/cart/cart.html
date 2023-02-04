@@ -22,8 +22,7 @@
             {% for item in cart %}
               {% include 'cart/cart_item.html' %}
             {% endfor %}
-
-            {% if cart %}
+            
             <div class="flex border-t mt-4 border-b mb-6 border-gray-200 py-2">
               <span class="text-gray-500">Total</span>
               <span 
@@ -54,7 +53,6 @@
               </a>
               <!--  -->
             </div>
-            {% endif %}
           </div>
           <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
         </div>
