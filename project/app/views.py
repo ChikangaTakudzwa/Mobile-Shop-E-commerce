@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from django.contrib.auth.models import User
+from order.models import Order
 
 # Create your views here.
 def index(request):
@@ -43,10 +44,12 @@ def signup(request):
 def my_account(request):
     cart = Cart(request)
     product = Product.objects.all()
+    orders = Order.objects.all()
     context = {
         "user": request.user,
         "cart": cart,
-        "product": product
+        "product": product,
+        "orders": orders
     }
     return render(request, 'auth/myaccount.html', context)
 

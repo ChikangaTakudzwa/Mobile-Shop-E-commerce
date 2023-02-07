@@ -1,6 +1,6 @@
 {% load static %}
 <div class="hidden rounded-lg" id="orders" role="tabpanel" aria-labelledby="orders-tab">  
-    {% if cart %}
+    {% if orders %}
     <div class="min-w-full max-w-md p-4 bg-white border rounded-lg shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <div class="flex items-center justify-between mb-4">
             <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">My Orders</h5>
@@ -8,9 +8,10 @@
                 View all
             </a>
         </div>
+        {% for order in request.user.orders.all %}
         <div class="flow-root">
             <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-                {% for item in cart %}
+                {% for item in order.items.all %}
                 <li class="py-3 sm:py-4">
                     <div class="flex items-center space-x-4">
                         <div class="flex-shrink-0">
@@ -25,13 +26,18 @@
                             </p>
                         </div>
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                            {{ item.total_price }}
+                            ${{ item.price }}
                         </div>
                     </div>
                 </li>
                 {% endfor %}
             </ul>
         </div>
+        <div class="flex items-center justify-between my-4">
+            <h6 class="text-l leading-none text-gray-900 dark:text-white">Date: {{ order.created_at }}</h6>
+            <h6 class="text-l leading-none text-gray-900 dark:text-white">Total: Total Price</h6>
+        </div>
+        {% endfor %}
     </div>
     {% else %}
     <div class="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-gray-800 dark:text-yellow-300" role="alert">

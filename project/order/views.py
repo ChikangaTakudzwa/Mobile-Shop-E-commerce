@@ -11,21 +11,21 @@ def start_order(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
-        # email = request.POST.get('email')
+        email = request.POST.get('email')
         address = request.POST.get('address')
         zipcode = request.POST.get('zipcode')
         place = request.POST.get('place')
         phone = request.POST.get('phone')
 
         order = Order.objects.create(
-            user = request.user
-            first_name = first_name
-            last_name = last_name
-            email = request.user.email
-            address = address
-            zipcode = zipcode
-            place = place
-            phone = phone
+            user = request.user,
+            first_name = first_name,
+            last_name = last_name,
+            email = request.user.email,
+            address = address,
+            zipcode = zipcode,
+            place = place,
+            phone = phone,
         )
 
         for item in cart:
@@ -34,10 +34,10 @@ def start_order(request):
             price = product.price * quantity
 
             item = OrderItem.objects.create(
-                order = order
-                product = product
-                price = price
-                quantity = quantity
+                order = order,
+                product = product,
+                price = price,
+                quantity = quantity,
             )
         return redirect('me')
     return redirect('cart')
