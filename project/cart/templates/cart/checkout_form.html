@@ -1,5 +1,5 @@
-<form method="POST" action="{% url 'start_order' %}">
-    {% csrf_token %}
+<!-- <form method="POST" action="{% url 'start_order' %}">
+    {% csrf_token %} -->
     <div id="myTabContent" class="my-9">
         <!--     -->
         <!--     -->
@@ -112,8 +112,101 @@
         <button 
             class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
             type="submit"
+            onclick="buy(event)"
             >
             Confirm Checkout
         </button>
     </div>
-</form>
+<!-- </form> -->
+
+{% block js %}
+<script type="application/javascript" src="https://js.stripe.com/v3/"></script>
+<script>
+  
+  function validateForm(data){
+
+    let errors = []
+
+    if (data.first_name === ''){
+      errors.push('Field is empty')
+    }
+
+    if (data.last_name === ''){
+      errors.push('Field is empty')
+    }
+
+    if (data.email === ''){
+      errors.push('Field is empty')
+    }
+
+    if (data.address === ''){
+      errors.push('Field is empty')
+    }
+
+    if (data.phone === ''){
+      errors.push('Field is empty')
+    }
+
+    if (data.place === ''){
+      errors.push('Field is empty')
+    }
+
+    if (data.zipcode === ''){
+      errors.push('Field is empty')
+    }
+    return errors
+  }
+
+  // function to run when checkout button is clicked
+  function buy(event){
+    event.preventDefault()
+    // get input data
+    let data = {
+        'first_name': document.querySelector('input[name=first_name]').value,
+        'last_name': document.querySelector('input[name=last_name]').value,
+        'email': document.querySelector('input[name=email]').value,
+        'address': document.querySelector('input[name=address]').value,
+        'phone': document.querySelector('input[name=phone]').value,
+        'place': document.querySelector('input[name=place]').value,
+        'zipcode': document.querySelector('input[name=zipcode]').value,
+    }
+    // call validate form on data from form
+    let errors = validateForm(data)
+    // if they are errors, display them else if everything is okay call stripe with publichable key
+    if (errors.length){
+      console.log('Errors', errors)
+    } else {
+      var stripe = Stripe('{{ pub_key }}')
+      // use fetch to post data to the start order view
+      fetch('/order/start-order/',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}',
+          },
+          credentials: 'same-origin',
+          body: JSON.stringify(data)
+      })
+      .then(function(response){
+        return response.json()
+      })
+      // getting session from start order view return statement
+      .then(function(session){
+        return stripe.redirectToCheckout({sessionId: session.session.id})
+      })
+      // method to see if there is an error
+      .then(function(result){
+        if (result.error){
+          alert(result.error.message)
+        }
+      })
+      // catch to catch any other errors
+      .catch(function(error){
+        console.log('Errors', error)
+      })
+    }
+    return false
+  }
+
+</script>
+{% endblock %}

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from product.models import Product
+from django.conf import settings
 
 # Create your views here.
 def add_to_cart(request, product_id):
@@ -27,21 +28,26 @@ def update_cart(request, id, action):
 
     # get products from the db
     product = Product.objects.get(pk=id)
-    quantity = cart.get_item(id)['quantity']
+    quantity = cart.get_item(id)
 
-    # dictionary to return to the cart
-    item = {
-        'product':{
-            'id': product.id,
-            'name': product.name,
-            'image': product.image,
-            'get_thumbnail': product.get_thumbnail(),
-            'price': product.price
-        },
-        'total_price': (quantity * product.price),
-        # 'total_price': (quantity * product.price) / 100 for dollar prices
-        'quantity': quantity
-    }
+    if quantity:
+        quantity = quantity['quantity']
+
+        # dictionary to return to the cart
+        item = {
+            'product':{
+                'id': product.id,
+                'name': product.name,
+                'image': product.image,
+                'get_thumbnail': product.get_thumbnail(),
+                'price': product.price
+            },
+            'total_price': (quantity * product.price),
+            # 'total_price': (quantity * product.price) / 100 for dollar prices
+            'quantity': quantity
+        }
+    else:
+        item = None
 
     response = render(request, 'cart/cart_item.html', {'item': item})
     response['hx-trigger'] = 'update-menu-cart'
@@ -52,8 +58,10 @@ def update_cart(request, id, action):
 @login_required
 def checkout(request):
     cart = Cart(request)
+    pub_key = settings.STRIPE_API_KEY_PUBLISHABLE
     context = {
-        "cart": cart
+        "cart": cart,
+        "pub_key": pub_key
     }
     return render(request, 'cart/checkout.html', context)
 
