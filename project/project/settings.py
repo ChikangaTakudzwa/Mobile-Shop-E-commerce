@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'compressor',
     'product',
     'cart',
+    'order',
 ]
 
 COMPRESS_ROOT = BASE_DIR / 'app/static/'
