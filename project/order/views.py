@@ -40,11 +40,12 @@ def start_order(request):
         payment_method_types=['card'],
         line_items=items,
         mode='payment',
-        success_url='https://chikangatakudzwa-redesigned-waffle-q6xgwrx497ghg54-8000.preview.app.github.dev/cart/success/',
-        cancel_url='https://chikangatakudzwa-redesigned-waffle-q6xgwrx497ghg54-8000.preview.app.github.dev/cart/'
+        success_url='https://*.gitpod.io/cart/success/',
+        cancel_url='https://*.gitpod.io/cart/'
     )
     payment_intent = session.payment_intent
 
+    # get form data from the data variable that uses json.loads
     first_name = data['first_name']
     last_name = data['last_name']
     email = data['email']
@@ -53,6 +54,7 @@ def start_order(request):
     place = data['place']
     phone = data['phone']
 
+    # createw order from form data
     order = Order.objects.create(
             user = request.user,
             first_name = first_name,
@@ -68,6 +70,7 @@ def start_order(request):
     order.paid = True
     order.save()
 
+    # loop through items in the cart and get the product, quantity and total price
     for item in cart:
         product = item['product']
         quantity = item['quantity']

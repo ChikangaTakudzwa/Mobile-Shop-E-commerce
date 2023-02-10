@@ -22,7 +22,7 @@ class Product(models.Model):
     model = models.SlugField()
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
-    price = models.FloatField()
+    price = models.IntegerField()
     created_at = models.DateField(auto_now_add=True)
 
     class Meta:
