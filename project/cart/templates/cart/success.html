@@ -1,0 +1,23 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% load compress %}
+
+{% block title %}Success{%endblock%}
+
+{% block success %}
+ 
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Thank you for your purchase</p>
+          </div>
+          <div class="flex lg:w-[100wh] w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 justify-items-center">
+            
+            <button class="mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Shop</button>
+          </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -9,8 +9,8 @@
             </a>
         </div>
         {% for order in request.user.orders.all %}
-        <div class="flow-root">
-            <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <div class="flow-root border-b-2 border-gray-300">
+            <ul role="list" class="">
                 {% for item in order.items.all %}
                 <li class="py-3 sm:py-4">
                     <div class="flex items-center space-x-4">
@@ -24,19 +24,23 @@
                             <p class="text-sm text-gray-500 truncate dark:text-gray-400">
                                 Quantity: {{ item.quantity }}
                             </p>
+                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                Each: {{ item.price }}
+                            </p>
                         </div>
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                            ${{ item.price }}
+                            ${{ item.get_total }}
                         </div>
                     </div>
                 </li>
                 {% endfor %}
             </ul>
+            <div class="flex items-center justify-between my-4">
+                <h6 class="text-l leading-none text-gray-900 dark:text-white">Date: {{ order.created_at }}</h6>
+                <h6 class="text-l leading-none text-gray-900 dark:text-white">Total: {{ order.get_total }}</h6>
+            </div>
         </div>
-        <div class="flex items-center justify-between my-4">
-            <h6 class="text-l leading-none text-gray-900 dark:text-white">Date: {{ order.created_at }}</h6>
-            <h6 class="text-l leading-none text-gray-900 dark:text-white">Total: Total Price</h6>
-        </div>
+        
         {% endfor %}
     </div>
     {% else %}

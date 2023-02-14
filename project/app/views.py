@@ -7,7 +7,8 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from django.contrib.auth.models import User
-from order.models import Order
+from order.models import Order, OrderItem
+from django.db.models import Sum
 
 # Create your views here.
 def index(request):
@@ -45,11 +46,15 @@ def my_account(request):
     cart = Cart(request)
     product = Product.objects.all()
     orders = Order.objects.all()
+    orditem = OrderItem.objects.all()
+    # add all items in the prders queryset
+    # total_order = orditem.aggregate(Sum('price'))['price__sum']
     context = {
         "user": request.user,
         "cart": cart,
         "product": product,
-        "orders": orders
+        "orders": orders,
+        # "total_orderitem": total_order,
     }
     return render(request, 'auth/myaccount.html', context)
 

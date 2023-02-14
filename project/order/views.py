@@ -40,7 +40,7 @@ def start_order(request):
         payment_method_types=['card'],
         line_items=items,
         mode='payment',
-        success_url='https://*.gitpod.io/cart/success/',
+        success_url='https://8000-chikangatakud-ecommerce-4lzll6gj2td.ws-eu86.gitpod.io/cart/success/',
         cancel_url='https://*.gitpod.io/cart/'
     )
     payment_intent = session.payment_intent
@@ -81,4 +81,8 @@ def start_order(request):
             price = price,
             quantity = quantity,
         )
+
+    # clear the cart
+    cart.clear()
+
     return JsonResponse({'session': session, 'order': payment_intent})

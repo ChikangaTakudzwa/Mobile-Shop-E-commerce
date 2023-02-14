@@ -69,6 +69,10 @@ class Cart(object):
             del self.cart[id]
             self.save()
 
+    def clear(self):
+        del self.session[settings.CART_SESSION_ID]
+        self.session.modified = True
+
     def get_total(self):
         for p in self.cart.keys():
             # strigfy id to access it as string and assign product proprty into p
