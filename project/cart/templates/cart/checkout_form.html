@@ -64,6 +64,9 @@
                   <input type="text" id="place" name="place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Paris">
                 </div>
             </div>
+            <div class="my-3 rounded-xl" id="errors">
+                
+            </div>
 
         </div>
 
@@ -123,6 +126,8 @@
 <script type="application/javascript" src="https://js.stripe.com/v3/"></script>
 <script>
   
+  let element = document.querySelector('#errors')
+
   function validateForm(data){
 
     let errors = []
@@ -154,6 +159,21 @@
     if (data.zipcode === ''){
       errors.push('Field is empty')
     }
+
+    // condition to check if the element variable is greater than 0
+    if (errors.length > 0){
+      let html = '<ul>';
+
+      errors.forEach((error) => {
+        
+        html += '<li>' + error + '</li>';
+
+      })
+      element.innerHTML = html + '</ul>';
+    } else {
+      element.innerHTML = '';
+    }
+
     return errors
   }
 
