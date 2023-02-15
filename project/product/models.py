@@ -9,7 +9,9 @@ class Category(models.Model):
     slug = models.SlugField()
 
     class Meta:
+        verbose_name_plural = 'Categories'
         ordering = ['name']
+    
 
     def __str__(self):
         return self.name
@@ -22,7 +24,7 @@ class Product(models.Model):
     model = models.SlugField()
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
-    price = models.FloatField()
+    price = models.IntegerField()
     created_at = models.DateField(auto_now_add=True)
 
     class Meta:

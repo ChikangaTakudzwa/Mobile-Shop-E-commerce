@@ -37,8 +37,13 @@ CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io', 'https://*.github.dev']
 
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
-# Application definition
 
+# api key to be used with js
+STRIPE_API_KEY_PUBLISHABLE = 'pk_test_51MYyJqHBhlH5LxdXfl4ji8hWP15bfH6UHUzZwHIfbOQ1D6Xdpp8NAOyAZlIi4PZSSjw3H0xZtzf8WKV9BmD9vR4b00RYI4wAGS'
+# api key for the backend
+STRIPE_API_KEY_HIDDEN = 'sk_test_51MYyJqHBhlH5LxdXijVTizzkiOopTfsofNyjrCFdXtJEZpwMAIPrb6ahGzp96emqFPZk0siNIPlS8lkwm031FT2j003dZa8sbw'
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +55,7 @@ INSTALLED_APPS = [
     'compressor',
     'product',
     'cart',
+    'order',
 ]
 
 COMPRESS_ROOT = BASE_DIR / 'app/static/'

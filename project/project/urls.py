@@ -23,9 +23,11 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
     path('', include('app.urls')),
     path('cart/', include('cart.urls')),
+    path('order/', include('order.urls')),
+    path('admin/', admin.site.urls),
     
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
