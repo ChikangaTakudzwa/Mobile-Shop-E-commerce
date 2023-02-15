@@ -41,6 +41,10 @@ class Order(models.Model):
             return self.paid_amount
         return 0
 
+    def __str__(self):
+        ordername = self.first_name + ',     ' + self.email + ',      ' + self.address
+        return ordername
+
 class OrderItem(models.Model):
     """
     Order Item Model
@@ -54,3 +58,6 @@ class OrderItem(models.Model):
         # return for prices in dollar format
         # return self.price / 100
         return self.price
+
+    def __str__(self):
+        return self.quantity

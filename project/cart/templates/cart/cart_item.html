@@ -1,6 +1,8 @@
 {% if item %}
     <div class="flex border-t mt-4 border-gray-200 py-2" id="cart-item-{{ item.product.id }}">
-        <span class="text-gray-500">{{ item.product.name }}</span>
+        <a href="{% url 'product' item.product.slug %}">
+            <span class="text-gray-500">{{ item.product.name }}</span>
+        </a>
         <span class="ml-auto text-gray-900">
             <!-- Added htmx triggers for incrementing and decrementing cart items -->
             <a 
