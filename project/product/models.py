@@ -1,5 +1,6 @@
 from django.db import models
 from PIL import Image
+from django.contrib.auth.models import User
 from io import BytesIO
 from django.core.files import File
 
@@ -67,3 +68,10 @@ class Product(models.Model):
         # make method return the saved image
         thumbnail = File(thumb_io, name=image.name)
         return thumbnail
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    rating = models.IntegerField()
+    content = models.TextField()
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
+    created_at = models.DateTimeField(auto_now_add=True)
