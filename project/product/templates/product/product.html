@@ -136,13 +136,19 @@
               <button type="submit" class="button mt-3">Submit</button>
             </form>
           {% endif %}
+          {% for review in products.review.all %}
+            <div>
+              <strong>Review</strong>{{ review.rating }}/5<hr/>
+              <strong>Comments</strong><hr/>
+              {{ review.content }}
+            </div>
+          {% endfor %}
       </div>
     </div>
 </section>
 <script>
 
   // the following JavaScript code captures the user's rating and store it in the client's memory
-  // const stars = document.querySelectorAll('.star');
   const svgel = document.querySelectorAll('#svgel');
   const svg_length = document.getElementById('lengthsvg');
   const myrate = document.querySelectorAll('#svgel[fill="currentColor"]');
