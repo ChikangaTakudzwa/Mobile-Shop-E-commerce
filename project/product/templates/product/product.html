@@ -67,6 +67,7 @@
           {% if items.description %}
             <p class="leading-relaxed">{{ items.description }}</p>
           {% endif %}
+          <p class="leading-relaxed">Rating: {{ items.get_review }}</p>
           <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
             <div class="flex">
               <span class="mr-3">Color</span>
@@ -113,7 +114,7 @@
       </div>
     </div>
     <div class="container py-5 mx-auto">
-      <div class="border border-red-500 p-6">
+      <div class="p-6">
           <h2 class="text-xl">Reviews</h2>
           {% if request.user.is_authenticated %}
             <form method="post" action="." class="p-6 bg-gray-300 rounded-xl">
@@ -136,10 +137,11 @@
               <button type="submit" class="button mt-3">Submit</button>
             </form>
           {% endif %}
-          {% for review in products.review.all %}
-            <div>
-              <strong>Review</strong>{{ review.rating }}/5<hr/>
-              <strong>Comments</strong><hr/>
+          {% for review in items.reviews.all %}
+            <div class="my-4">
+              <strong>Review </strong>{{ review.rating }}/5<hr/>
+              <strong>Date </strong>{{ review.created_at|date:"Y-m-d" }}<hr/>
+              <strong>Comments </strong><hr/>
               {{ review.content }}
             </div>
           {% endfor %}

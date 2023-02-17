@@ -69,9 +69,26 @@ class Product(models.Model):
         thumbnail = File(thumb_io, name=image.name)
         return thumbnail
 
+    def get_review(self):
+        total_review = 0
+
+        # loop through the reviews using self.review from the ralated_name of the review model
+        for review in self.reviews.all():
+            total_review += review.rating
+
+        # check if total review is greater than 0, if so return the total/the overall total of the review count
+        if total_review > 0:
+            return int(total_review / self.reviews.count())
+
+        return 0
+        
+
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
     rating = models.IntegerField()
     content = models.TextField()
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content
