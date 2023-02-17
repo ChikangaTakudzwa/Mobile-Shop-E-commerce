@@ -13,24 +13,39 @@
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h1 class="text-black text-3xl title-font font-medium mb-1">{{ items.name }}</h1>
           <div class="flex mb-4">
-            <span class="flex items-center">
-              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-              <span class="text-gray-600 ml-3">4 Reviews</span>
-            </span>
+            <form method="post" action="" class="mt-2">
+            {% csrf_token %}
+              <span class="flex items-center rating">
+                <a href="#" class="star">
+                  <svg fill="none" id="svgel" stroke="currentColor" data-value="1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                </a>
+                <a href="#" class="star">
+                  <svg fill="none" id="svgel" stroke="currentColor" data-value="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                </a>
+                <a href="#" class="star">
+                  <svg fill="none" id="svgel" stroke="currentColor" data-value="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                </a>
+                <a href="#" class="star">
+                  <svg fill="none" id="svgel" stroke="currentColor" data-value="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                </a>
+                <a href="#" class="star">
+                  <svg fill="none" id="svgel" stroke="currentColor" data-value="5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                </a>
+                <span id="lengthsvg" class="text-gray-600 ml-3"></span>
+                <input type="hidden" id="rating" name="rating" value="0">
+                <!-- <input type="submit" id="submit" > -->
+              </span>
+            </form>
             <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
               <a class="text-gray-500">
                 <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -52,6 +67,7 @@
           {% if items.description %}
             <p class="leading-relaxed">{{ items.description }}</p>
           {% endif %}
+          <p class="leading-relaxed">Rating: {{ items.get_review }}</p>
           <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
             <div class="flex">
               <span class="mr-3">Color</span>
@@ -97,6 +113,77 @@
         </div>
       </div>
     </div>
+    <div class="container py-5 mx-auto">
+      <div class="p-6">
+          <h2 class="text-xl">Reviews</h2>
+          {% if request.user.is_authenticated %}
+            <form method="post" action="." class="p-6 bg-gray-300 rounded-xl">
+              {% csrf_token %}
+             
+              <div>
+                <label for="review" class="leading-7 text-sm text-gray-600">Review</label>
+                <select type="review" id="review" name="review" class=" bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div>
+                <label for="message" class="leading-7 text-sm text-gray-600">Comment</label>
+                <textarea id="message" name="message" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+              </div>
+              <button type="submit" class="button mt-3">Submit</button>
+            </form>
+          {% endif %}
+          {% for review in items.reviews.all %}
+            <div class="my-4">
+              <strong>Review </strong>{{ review.rating }}/5<hr/>
+              <strong>Date </strong>{{ review.created_at|date:"Y-m-d" }}<hr/>
+              <strong>Comments </strong><hr/>
+              {{ review.content }}
+            </div>
+          {% endfor %}
+      </div>
+    </div>
 </section>
+<script>
 
+  // the following JavaScript code captures the user's rating and store it in the client's memory
+  const svgel = document.querySelectorAll('#svgel');
+  const svg_length = document.getElementById('lengthsvg');
+  const myrate = document.querySelectorAll('#svgel[fill="currentColor"]');
+
+  console.log(svgel.length);
+  console.log(svg_length);
+
+  const lent = myrate.length;
+  console.log(lent);
+
+  window.onload = function(){
+    if (svg_length){
+      if (lent < 1){
+        svg_length.innerHTML = "Reviews";
+      } else {
+        svg_length.innerHTML = lent + " Reviews";
+      }
+    }
+  }
+
+  svgel.forEach(function(svg) {
+    svg.addEventListener('click', function() {
+      const rating = this.getAttribute('data-value');
+      document.getElementById('rating').value = rating;
+      for (let i=0; i<rating; i++) {
+        svgel[i].setAttribute('fill', 'currentColor');
+      }
+      for (let i=rating; i<svgel.length; i++) {
+        svgel[i].setAttribute('fill', 'none');
+      }
+    });
+  });
+
+
+</script>
 {% endblock %}
