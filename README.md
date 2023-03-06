@@ -24,6 +24,8 @@ Clone this repository to your local machine.
 
 Install the dependencies and required packages by running the setup.sh file using `./bash setup.sh`
 
+Install npm dependencies by running the command `./bash tailwind_setup.sh`
+
 Set up your environment variables for the database and Stripe integration.
 
 Run the Django development server using the command `python manage.py runserver`.
