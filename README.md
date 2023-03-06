@@ -4,18 +4,27 @@ A mobile shop e-commerce website built with Django, Tailwind, and HTMX. This pro
 
 ## Features
 User authentication and authorization (login, logout, registration, password reset)
+
 Product catalog with search and filtering options
+
 Product detail pages with images, descriptions, and reviews
+
 Shopping cart and checkout process with payment integration (using Stripe)
+
 Order history and status tracking for users
+
 Admin dashboard for managing products, orders, and customers
 
 ## Technologies Used
 
 Django web framework for backend development
+
 Tailwind CSS for frontend styling and layout
+
 HTMX library for dynamic and interactive frontend components
+
 PostgreSQL database(bit.io) for data storage
+
 Stripe API for payment processing
 
 ## How to Use
