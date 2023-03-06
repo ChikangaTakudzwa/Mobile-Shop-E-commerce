@@ -21,9 +21,13 @@ Stripe API for payment processing
 ## How to Use
 
 Clone this repository to your local machine.
+
 Install the dependencies and required packages by running the setup.sh file using `./bash setup.sh`
+
 Set up your environment variables for the database and Stripe integration.
+
 Run the Django development server using the command `python manage.py runserver`.
+
 Open your web browser and navigate to `http://localhost:8000` to view the website.
 
 ## Contributing
